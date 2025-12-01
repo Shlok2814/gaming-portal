@@ -56,16 +56,6 @@
             color: #cdd6e0;
         }
 
-        .filter {
-            width: 200px;
-            margin: 0 auto 40px;
-            display: block;
-            padding: 10px;
-            border-radius: 6px;
-            border: none;
-            font-size: 16px;
-        }
-
         .games-container {
             display: flex;
             justify-content: center;
@@ -78,28 +68,19 @@
             background-color: #1b263b;
             width: 300px;
             border-radius: 15px;
-            overflow: hidden;
+            padding: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             transition: 0.3s;
+            text-align: center;
         }
 
         .game-card:hover {
             transform: translateY(-6px);
         }
 
-        .game-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .game-info {
-            padding: 20px;
-            text-align: center;
-        }
-
         .game-info h3 {
             margin: 10px 0 5px;
+            font-size: 22px;
             color: #a3cef1;
         }
 
@@ -146,46 +127,29 @@
         Handcrafted Games by SHLOK SHUKLA. Dive into a world of fun!
     </p>
 
-    <!-- Filter -->
-    <center>
-        <label style="color:#cdd6e0; font-size:18px;">Filter by Genre:</label><br><br>
-        <select class="filter">
-            <option>All Games</option>
-            <option>Platformer</option>
-            <option>Endless Runner</option>
-            <option>RPG</option>
-        </select>
-    </center>
-
-    <!-- Game Cards -->
+    <!-- Game Cards Without Images -->
     <div class="games-container">
 
         <!-- Game 1 -->
         <div class="game-card">
-            <img src="https://i.ibb.co/9TtKj1z/game1.jpg" alt="Sharp Shooter">
             <div class="game-info">
                 <h3>Sharp-Shooter</h3>
-                <p>Platformer</p>
                 <button class="play-btn">Play Now</button>
             </div>
         </div>
 
         <!-- Game 2 -->
         <div class="game-card">
-            <img src="https://i.ibb.co/FJpPm7H/game2.jpg" alt="Escape">
             <div class="game-info">
                 <h3>Escape</h3>
-                <p>Endless Runner</p>
                 <button class="play-btn">Play Now</button>
             </div>
         </div>
 
         <!-- Game 3 -->
         <div class="game-card">
-            <img src="https://i.ibb.co/FnfmFQk/game3.jpg" alt="Dungeon RPG">
             <div class="game-info">
                 <h3>Mythical Dungeon</h3>
-                <p>RPG</p>
                 <button class="play-btn">Play Now</button>
             </div>
         </div>
@@ -199,4 +163,3 @@
 
 </body>
 </html>
-

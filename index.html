@@ -66,7 +66,7 @@
 
         .game-card {
             background-color: #1b263b;
-            width: 300px;
+            width: 320px;
             border-radius: 15px;
             padding: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
@@ -78,8 +78,15 @@
             transform: translateY(-6px);
         }
 
+        .game-card img {
+            width: 100%;
+            height: 170px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
         .game-info h3 {
-            margin: 10px 0 5px;
+            margin: 15px 0 5px;
             font-size: 22px;
             color: #a3cef1;
         }
@@ -127,30 +134,18 @@
         Handcrafted Games by SHLOK SHUKLA. Dive into a world of fun!
     </p>
 
-    <!-- Game Cards Without Images -->
+    <!-- Single Game Card -->
     <div class="games-container">
 
-        <!-- Game 1 -->
         <div class="game-card">
+            <img src="car-race.png" alt="3D Car Race">
             <div class="game-info">
-                <h3>Sharp-Shooter</h3>
-                <button class="play-btn">Play Now</button>
-            </div>
-        </div>
+                <h3>3D Car Race</h3>
 
-        <!-- Game 2 -->
-        <div class="game-card">
-            <div class="game-info">
-                <h3>Escape</h3>
-                <button class="play-btn">Play Now</button>
-            </div>
-        </div>
-
-        <!-- Game 3 -->
-        <div class="game-card">
-            <div class="game-info">
-                <h3>Mythical Dungeon</h3>
-                <button class="play-btn">Play Now</button>
+                <button class="play-btn"
+                    onclick="window.open('https://shlok-shukla.itch.io/3d-car-race', '_blank')">
+                    Play Now
+                </button>
             </div>
         </div>
 
@@ -163,3 +158,4 @@
 
 </body>
 </html>
+

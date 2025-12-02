@@ -4,34 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Gaming Portal</title>
+
     <style>
+        /* -------------------- GLOBAL -------------------- */
         body {
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000; /* Black */
-            color: #f5d300; /* Yellow */
+            background: linear-gradient(135deg, #000000, #1a1a1a, #000000);
+            color: #f5d300;
+            overflow-x: hidden;
         }
 
+        /* Floating glow animation */
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 10px rgba(255, 220, 0, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(255, 220, 0, 0.8); }
+            100% { box-shadow: 0 0 10px rgba(255, 220, 0, 0.4); }
+        }
+
+        /* -------------------- HEADER -------------------- */
         header {
-            background-color: #111; /* Dark black */
-            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 22px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #f5d300; /* Yellow */
+            border-bottom: 2px solid #f5d300;
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         header h1 {
-            color: #f5d300;
-            font-size: 32px;
             margin: 0;
-            display: flex;
-            align-items: center;
-        }
-
-        header h1::before {
-            content: "🎮 ";
-            margin-right: 10px;
+            font-size: 32px;
+            letter-spacing: 1px;
+            color: #f5d300;
+            animation: glowPulse 4s infinite;
         }
 
         nav a {
@@ -40,91 +50,138 @@
             margin-left: 30px;
             font-size: 18px;
             transition: 0.3s;
+            padding-bottom: 3px;
         }
 
         nav a:hover,
         nav a.active {
-            color: #fff;
-            border-bottom: 2px solid #fff;
-            padding-bottom: 5px;
+            color: white;
+            border-bottom: 2px solid white;
         }
 
+        /* -------------------- SUBTITLE -------------------- */
         .subtitle {
             text-align: center;
-            margin: 40px 0;
-            font-size: 18px;
+            margin: 50px 0 30px;
+            font-size: 20px;
             color: #ffe55c;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeIn 1.6s forwards;
         }
 
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* -------------------- GAME CARD -------------------- */
         .games-container {
             display: flex;
             justify-content: center;
             gap: 40px;
-            flex-wrap: wrap;
             padding: 0 40px;
+            flex-wrap: wrap;
         }
 
         .game-card {
-            background-color: #111;
-            width: 320px;
-            border-radius: 15px;
+            width: 340px;
+            height: 420px;
+            border-radius: 20px;
             padding: 20px;
-            box-shadow: 0 4px 12px rgba(255, 255, 0, 0.2);
-            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 0, 0.3);
+            transition: 0.4s;
             text-align: center;
-            border: 1px solid #f5d300;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
         .game-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 6px 16px rgba(255, 255, 0, 0.4);
+            transform: translateY(-12px) scale(1.03);
+            border-color: #f5d300;
+            box-shadow: 0 0 40px rgba(255, 230, 0, 0.3);
         }
 
         .game-card img {
             width: 100%;
-            height: 170px;
-            border-radius: 10px;
+            height: 200px;
+            border-radius: 12px;
             object-fit: cover;
             border: 2px solid #f5d300;
         }
 
         .game-info h3 {
-            margin: 15px 0 5px;
-            font-size: 22px;
-            color: #fff;
+            margin: 20px 0 10px;
+            font-size: 24px;
+            color: white;
         }
 
         .play-btn {
-            margin-top: 10px;
-            padding: 10px 20px;
+            padding: 12px 25px;
             background-color: #f5d300;
-            color: #000;
+            color: black;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 16px;
             transition: 0.3s;
         }
 
         .play-btn:hover {
-            background-color: #ffe55c;
+            background-color: #fff06e;
+            transform: scale(1.1);
         }
 
+        /* -------------------- FOOTER -------------------- */
         footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 20px;
-            background-color: #111;
-            color: #f5d300;
+            margin-top: 80px;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.6);
             border-top: 2px solid #f5d300;
+            text-align: center;
+            color: #ffe55c;
+            backdrop-filter: blur(8px);
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #f5d300;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-50px) translateX(20px); }
+            100% { transform: translateY(0) translateX(0); }
         }
     </style>
 </head>
+
 <body>
 
-    <!-- Header Section -->
+    <!-- Floating particles -->
+    <script>
+        for (let i = 0; i < 25; i++) {
+            let p = document.createElement("div");
+            p.className = "particle";
+            p.style.top = Math.random() * window.innerHeight + "px";
+            p.style.left = Math.random() * window.innerWidth + "px";
+            p.style.animationDelay = (Math.random() * 5) + "s";
+            document.body.appendChild(p);
+        }
+    </script>
+
+    <!-- Header -->
     <header>
-        <h1>My Gaming Portal</h1>
+        <h1>🎮 My Gaming Portal</h1>
 
         <nav>
             <a href="#" class="active">Home</a>
@@ -134,18 +191,16 @@
     </header>
 
     <!-- Subtitle -->
-    <p class="subtitle">
-        Handcrafted Games by SHLOK SHUKLA. Dive into a world of fun!
-    </p>
+    <p class="subtitle">Handcrafted Games by <strong>SHLOK SHUKLA</strong>. Get Ready to Play!</p>
 
-    <!-- Single Game Card -->
+    <!-- Games -->
     <div class="games-container">
 
         <div class="game-card">
-            <img src="car-race.png" alt="3D Car Race">
+            <img src="Screenshot 2025-12-02 010213.png" alt="Game Image">
+
             <div class="game-info">
                 <h3>3D Car Race</h3>
-
                 <button class="play-btn"
                     onclick="window.open('https://shlok-shukla.itch.io/3d-car-race', '_blank')">
                     Play Now
@@ -157,10 +212,11 @@
 
     <!-- Footer -->
     <footer>
-        © 2025 My Games Portal. All Rights Reserved. | Designed by Shlok Shukla
+        © 2025 My Games Portal | Designed by Shlok Shukla
     </footer>
 
 </body>
 </html>
+
 
 

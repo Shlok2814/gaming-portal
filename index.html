@@ -6,6 +6,7 @@
     <title>My Gaming Portal</title>
 
     <style>
+        /* -------------------- GLOBAL -------------------- */
         body {
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -14,6 +15,14 @@
             overflow-x: hidden;
         }
 
+        /* Floating glow animation */
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 10px rgba(255, 220, 0, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(255, 220, 0, 0.8); }
+            100% { box-shadow: 0 0 10px rgba(255, 220, 0, 0.4); }
+        }
+
+        /* -------------------- HEADER -------------------- */
         header {
             background: rgba(0, 0, 0, 0.7);
             padding: 22px 50px;
@@ -30,7 +39,9 @@
         header h1 {
             margin: 0;
             font-size: 32px;
+            letter-spacing: 1px;
             color: #f5d300;
+            animation: glowPulse 4s infinite;
         }
 
         nav a {
@@ -39,6 +50,7 @@
             margin-left: 30px;
             font-size: 18px;
             transition: 0.3s;
+            padding-bottom: 3px;
         }
 
         nav a:hover,
@@ -47,13 +59,22 @@
             border-bottom: 2px solid white;
         }
 
+        /* -------------------- SUBTITLE -------------------- */
         .subtitle {
             text-align: center;
             margin: 50px 0 30px;
             font-size: 20px;
             color: #ffe55c;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeIn 1.6s forwards;
         }
 
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* -------------------- GAME CARD -------------------- */
         .games-container {
             display: flex;
             justify-content: center;
@@ -73,6 +94,14 @@
             transition: 0.4s;
             text-align: center;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            border-color: #f5d300;
+            box-shadow: 0 0 40px rgba(255, 230, 0, 0.3);
         }
 
         .game-card img {
@@ -106,6 +135,7 @@
             transform: scale(1.1);
         }
 
+        /* -------------------- FOOTER -------------------- */
         footer {
             margin-top: 80px;
             padding: 25px;
@@ -113,12 +143,43 @@
             border-top: 2px solid #f5d300;
             text-align: center;
             color: #ffe55c;
+            backdrop-filter: blur(8px);
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #f5d300;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-50px) translateX(20px); }
+            100% { transform: translateY(0) translateX(0); }
         }
     </style>
 </head>
 
 <body>
 
+    <!-- Floating particles -->
+    <script>
+        for (let i = 0; i < 25; i++) {
+            let p = document.createElement("div");
+            p.className = "particle";
+            p.style.top = Math.random() * window.innerHeight + "px";
+            p.style.left = Math.random() * window.innerWidth + "px";
+            p.style.animationDelay = (Math.random() * 5) + "s";
+            document.body.appendChild(p);
+        }
+    </script>
+
+    <!-- Header -->
     <header>
         <h1>🎮 My Gaming Portal</h1>
 
@@ -129,30 +190,18 @@
         </nav>
     </header>
 
+    <!-- Subtitle -->
     <p class="subtitle">Handcrafted Games by <strong>SHLOK SHUKLA</strong>. Get Ready to Play!</p>
 
+    <!-- Games -->
     <div class="games-container">
 
         <div class="game-card">
-            <img src="https://s.cafebazaar.ir/images/upload/screenshot/com.mizo.speed.car.track.racing.games-6fd3bc5c-54a6-44b1-b01c-0852aac282e4.jpeg?x-img=v1/resize,h_600,lossless_false/optimize" alt="Game Image">
+            <img src="https://play-lh.googleusercontent.com/YsrStGWt1WJV7Z0yYX5AhuXjlxoE1Xl2PRfNlPRzx-zamWPIpXxYkWwaP42gnikI7w=w720-h310" alt="Game Image">
 
             <div class="game-info">
                 <h3>3D Car Race</h3>
-                <button class="play-btn"
-                    onclick="window.open('https://shlok-shukla.itch.io/3d-car-race', '_blank')">
-                    Play Now
-                </button>
-            </div>
-        </div>
 
-    </div>
-
-    <footer>
-        © 2025 My Games Portal | Designed by Shlok Shukla
-    </footer>
-
-</body>
-</html>
 
 
 
